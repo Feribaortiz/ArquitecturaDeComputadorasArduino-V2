@@ -1,10 +1,11 @@
 var id = localStorage.getItem("id")
 var pantallaMostrador;
 var btnMostrador = document.getElementsByClassName('btnMostrador')
+
 const {BrowserWindow}=require('electron').remote
+const app=require('electron').app
 const path=require('path')
 const url=require('url')
-
 
 
 const inicio = function(){
@@ -13,16 +14,20 @@ const inicio = function(){
     .then(datos=>datos.json())
     .then(datos => {
         let art= "";
+        console.log('aiuda');
+        console.log(id)
         console.log(datos);
+
         for(let i = 0; i<datos.mostradores.length; i++){
             const vit = datos.mostradores[i];
+            id = vit.id
             art +=`
             <article class="abajoIzquierda">
                 <img src="${vit.imagenFondoUrl}" class="imgFoto">
             </article>
             <article class="abajoDerecha">
                 <h4>${vit.titulo}</h4>
-                <button class="btnMostrador" value="${i}" >Entrar ${vit.titulo}</button>
+                <button class="btnMostrador" value="${vit.id}" >Entrar ${vit.titulo}</button>
             </article>
             <hr>
             <br>

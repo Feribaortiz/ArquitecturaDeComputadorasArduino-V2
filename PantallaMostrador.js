@@ -2,21 +2,23 @@ var id = localStorage.getItem("id")
 
 
 const inicio = function(){
-    var url ="http://museobillete.azurewebsites.net/"
-    fetch(url+"Piezas/Details/BIL.MEX.M21")
+    var url ="http://museobillete.azurewebsites.net/api/expo/"
+    fetch(url+id)
     .then(datos=>datos.json())
     .then(datos => {
         let art= "";
+        console.log('aiuda');
+        console.log(id);
         console.log(datos);
         for(let i = 0; i<datos.mostradores.length; i++){
-            const vit = datos.mostradores[i];
+            const vit = datos.mostradores[i][i];
             art +=`
             <article class="abajoIzquierda">
                 <img src="${vit.imagenFondoUrl}" class="imgFoto">
             </article>
             <article class="abajoDerecha">
                 <h4>${vit.titulo}</h4>
-                <button class="btnVitrina" value="${i}" >Entrar ${vit.titulo}</button>
+              
             </article>
             <hr>
             <br>
@@ -28,5 +30,9 @@ const inicio = function(){
             btnVitrina[i].addEventListener('click',entraMostrador)
         }
     });
+
 }
+
+window.addEventListener('DOMContentLoaded',inicio,false);
+
 
