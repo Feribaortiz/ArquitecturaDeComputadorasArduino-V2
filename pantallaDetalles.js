@@ -1,12 +1,6 @@
-var pos = localStorage.getItem("pos")
 var id = localStorage.getItem("id")
-var pantallaDetalles;
-var pantallaPiezas;
-var btnMonedas = document.getElementsByClassName('btnMonedas')
-const {BrowserWindow}=require('electron').remote
-const app=require('electron').app
-const path=require('path')
-const url=require('url')
+var pos = localStorage.getItem("pos")
+
 const inicio = function(){
     var url ="http://museobillete.azurewebsites.net/api/expo/"
     console.log(url+id);
@@ -34,7 +28,6 @@ const inicio = function(){
             <br>
             `;
         }
-        document.getElementById('abajo').innerHTML = art;
         console.log(btnMonedas.length);
         
         for(let i=0;i<btnMonedas.length;i++){
@@ -45,36 +38,3 @@ const inicio = function(){
 }
 
 window.addEventListener('DOMContentLoaded',inicio,false);
-
-var entraMoneda = function(){
-    console.log(this.id);
-    localStorage.setItem("pos",this.id)
-    if(this.value){
-        muestraDetalles();
-       } else{
-           entraPieza();
-       }
-}
-
-
-var entraPieza = function(){
-    pantallaPiezas = new BrowserWindow({width:1080,height:720})
-    pantallaPiezas.loadURL(url.format({
-        pathname: path.join(__dirname,'pantallaPiezas.html'),
-        protocol: 'file',
-        slashes: true
-    }))
-    pantallaPiezas.show();
-}
-
-var muestraDetalles = function(){
-    pantallaDetalles = new BrowserWindow({width:1080,height:720})
-    pantallaDetalles.loadURL(url.format({
-        pathname: path.join(__dirname,'pantallaDetalles.html'),
-        protocol: 'file',
-        slashes: true
-    }))
-    pantallaDetalles.show();
-}
-
-

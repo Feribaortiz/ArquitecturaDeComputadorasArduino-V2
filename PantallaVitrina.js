@@ -10,6 +10,7 @@ const url=require('url')
 
 const inicio = function(){
     var url ="http://museobillete.azurewebsites.net/api/expo/"
+    console.log(id)
     fetch(url+id)
     .then(datos=>datos.json())
     .then(datos => {
@@ -20,14 +21,13 @@ const inicio = function(){
 
         for(let i = 0; i<datos.mostradores.length; i++){
             const vit = datos.mostradores[i];
-            id = vit.id
             art +=`
             <article class="abajoIzquierda">
                 <img src="${vit.imagenFondoUrl}" class="imgFoto">
             </article>
             <article class="abajoDerecha">
                 <h4>${vit.titulo}</h4>
-                <button class="btnMostrador" value="${vit.id}" >Entrar ${vit.titulo}</button>
+                <button value="${i}" class="btnMostrador" id="${vit.id}" >Entrar ${vit.titulo}</button>
             </article>
             <hr>
             <br>
@@ -46,6 +46,7 @@ window.addEventListener('DOMContentLoaded',inicio,false);
 
 var entraMostrador = function(){
     localStorage.setItem("id",this.id)
+    localStorage.setItem("pos",this.value)
     pantallaMostrador = new BrowserWindow({width:1080,height:720})
     pantallaMostrador.loadURL(url.format({
         pathname: path.join(__dirname,'PantallaMostrador.html'),
