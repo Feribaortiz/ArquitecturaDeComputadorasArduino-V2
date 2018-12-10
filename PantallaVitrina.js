@@ -1,6 +1,6 @@
 var id = localStorage.getItem("id")
 var pantallaMostrador;
-var btnMostrador = document.getElementsByClassName('btnMostrador')
+var btnMostrador = document.getElementsByClassName('btnPagina')
 
 const {BrowserWindow}=require('electron').remote
 const app=require('electron').app
@@ -26,8 +26,8 @@ const inicio = function(){
                 <img src="${vit.imagenFondoUrl}" class="imgFoto">
             </article>
             <article class="abajoDerecha">
-                <h4>${vit.titulo}</h4>
-                <button value="${i}" class="btnMostrador" id="${id}" >Entrar ${vit.titulo}</button>
+                <h4 class="titulo" >${vit.titulo}</h4>
+                <button value="${i}" class="btnPagina" id="${id}" >Entrar ${vit.titulo}</button>
             </article>
             <hr>
             <br>

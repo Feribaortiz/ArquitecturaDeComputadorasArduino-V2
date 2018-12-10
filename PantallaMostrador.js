@@ -5,7 +5,7 @@ var pantallaDetalles;
 var pantallaPiezas;
 var f;
 var num;
-var btnMonedas = document.getElementsByClassName('btnMonedas')
+var btnMonedas = document.getElementsByClassName('btnPagina')
 const {BrowserWindow}=require('electron').remote
 const app=require('electron').app
 const path=require('path')
@@ -27,8 +27,8 @@ const inicio = function(){
                 <img src="${mos.imagenFondoUrl}" class="imgFoto">
             </article>
             <article class="abajoDerecha">
-                <h4>${mos.titulo}</h4>
-                <button value="${num}" class="btnMonedas" id="${i}" >Entrar</button>
+                <h4 class="titulo">${mos.titulo}</h4>
+                <button value="${num}" class="btnPagina" id="${i}" >Entrar</button>
             </article>
             <hr>
             <br>

@@ -5,7 +5,7 @@ const url=require('url')
 var link =""
 var pantallaVitrina;
 
-var btnVitrina = document.getElementsByClassName('btnVitrina')
+var btnVitrina = document.getElementsByClassName('btnPagina')
 
 
 const inicio = function(){
@@ -19,8 +19,10 @@ const inicio = function(){
             art +=`
             <article class="abajoIzquierda">
                 <img src="${vit.imagenFondoUrl}" class="imgFoto">
-                <h4>${vit.titulo}</h4>
-                <button class="btnVitrina" id="${vit.id}" >Entrar ${vit.titulo}</button>
+            </article>
+            <article class="abajoDerecha">
+                <h4 class="titulo">${vit.titulo}</h4>
+                <button class="btnPagina" id="${vit.id}" >Entrar ${vit.titulo}</button>
             </article>
        
                 
