@@ -17,7 +17,7 @@ const inicio = function(){
         let art= "";
         console.log('aiuda');
         console.log(id)
-        console.log(datos);
+        console.log(datos.mostradores[0].id);
 
         for(let i = 0; i<datos.mostradores.length; i++){
             const vit = datos.mostradores[i];
@@ -27,7 +27,7 @@ const inicio = function(){
             </article>
             <article class="abajoDerecha">
                 <h4>${vit.titulo}</h4>
-                <button value="${i}" class="btnMostrador" id="${vit.id}" >Entrar ${vit.titulo}</button>
+                <button value="${i}" class="btnMostrador" id="${id}" >Entrar ${vit.titulo}</button>
             </article>
             <hr>
             <br>

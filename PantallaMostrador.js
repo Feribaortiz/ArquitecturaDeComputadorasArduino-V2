@@ -1,7 +1,10 @@
 var pos = localStorage.getItem("pos")
 var id = localStorage.getItem("id")
+var posmostrador = pos;
 var pantallaDetalles;
 var pantallaPiezas;
+var f;
+var num;
 var btnMonedas = document.getElementsByClassName('btnMonedas')
 const {BrowserWindow}=require('electron').remote
 const app=require('electron').app
@@ -10,25 +13,22 @@ const url=require('url')
 const inicio = function(){
     var url ="http://museobillete.azurewebsites.net/api/expo/"
     console.log(url+id);
-    fetch(url+id)
+      fetch(url+id)
     .then(datos=>datos.json())
     .then(datos => {
         let art= "";
-        console.log('aiuda');
-        console.log(id);
-        console.log(pos);
-        console.log(datos.mostradores[0].grupos[1])
-        console.log(datos.mostradores[0].grupos[1].unico)
-        console.log(datos.mostradores[0].grupos[1].piezas[0])
-        for(let i = 0; i<datos.mostradores[0].grupos.length; i++){
-            const mos = datos.mostradores[0].grupos[i];
+          f = datos;
+        console.log(datos.mostradores[0].grupos[0])
+        for(let i = 0; i<datos.mostradores[pos].grupos.length; i++){
+            const mos = datos.mostradores[pos].grupos[i];
+            num = datos.mostradores[pos].grupos[i].piezas.length;
             art +=`
             <article class="abajoIzquierda">
                 <img src="${mos.imagenFondoUrl}" class="imgFoto">
             </article>
             <article class="abajoDerecha">
                 <h4>${mos.titulo}</h4>
-                <button value="${mos.unico}" class="btnMonedas" id="${i}" >Entrar</button>
+                <button value="${num}" class="btnMonedas" id="${i}" >Entrar</button>
             </article>
             <hr>
             <br>
@@ -48,8 +48,13 @@ window.addEventListener('DOMContentLoaded',inicio,false);
 
 var entraMoneda = function(){
     console.log(this.id);
-    localStorage.setItem("pos",this.id)
-    if(this.value){
+    localStorage.setItem("posgrupo",this.id)
+    localStorage.setItem("posmostrador",posmostrador)
+    localStorage.setItem("pos",0)
+    var bool = this.value;
+    console.log(num)
+    console.log(num == 1)
+    if(num == 1){
         muestraDetalles();
        } else{
            entraPieza();
@@ -69,11 +74,10 @@ var entraPieza = function(){
 
 var muestraDetalles = function(){
     pantallaDetalles = new BrowserWindow({width:1080,height:720})
-    pantallaDetalles.loadURL(url.format({
-        pathname: path.join(__dirname,'pantallaDetalles.html'),
-        protocol: 'file',
-        slashes: true
-    }))
+    console.log("http://museobillete.azurewebsites.net/Piezas/Details/BIL.MEX.M2")
+    console.log(f);
+    const link = f.mostradores[posmostrador].grupos[pos].piezas[0].detallesUrl;
+    pantallaDetalles.loadURL(link)
     pantallaDetalles.show();
 }
 
