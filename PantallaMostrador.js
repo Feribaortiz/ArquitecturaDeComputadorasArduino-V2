@@ -73,12 +73,18 @@ var entraPieza = function(){
 }
 
 var muestraDetalles = function(){
-    pantallaDetalles = new BrowserWindow({width:1080,height:720})
-    console.log("http://museobillete.azurewebsites.net/Piezas/Details/BIL.MEX.M2")
-    console.log(f);
+    pantallaDetalles = new BrowserWindow({
+        webPreferences: {
+          preload: "./pantallaDetalles.js",
+          nodeIntegration: false
+        }
+      });
+    
     const link = f.mostradores[posmostrador].grupos[pos].piezas[0].detallesUrl;
     pantallaDetalles.loadURL(link)
+
     pantallaDetalles.show();
+
 }
 
 
