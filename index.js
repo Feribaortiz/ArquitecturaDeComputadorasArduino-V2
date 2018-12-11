@@ -4,9 +4,10 @@ const path=require('path')
 const url=require('url')
 var link =""
 var pantallaVitrina;
+var pantallaCrearUsuario;
 
 var btnVitrina = document.getElementsByClassName('btnPagina')
-
+var btnUsuario = document.getElementsByClassName('btnUsuario')
 
 const inicio = function(){
     fetch('http://museobillete.azurewebsites.net/api/expo/')
@@ -33,6 +34,8 @@ const inicio = function(){
         }
         document.getElementById('abajo').innerHTML= art;
         
+        btnUsuario[0].addEventListener('click',crearUsuario);
+        
         for(let i=0;i<btnVitrina.length;i++){
             btnVitrina[i].addEventListener('click',entraVitrina)
         }
@@ -49,5 +52,20 @@ var entraVitrina = function(){
     }))
     pantallaVitrina.show();
 }
+
+var crearUsuario = function(){
+    console.log('Hola');
+    pantallaCrearUsuario = new BrowserWindow({width:1080,height:720})
+    pantallaCrearUsuario.loadURL(url.format({
+        pathname: path.join(__dirname,'PantallaAltaUsuario.html'),
+        protocol: 'file',
+        slashes: true
+    }))
+    pantallaCrearUsuario.show();
+}
+
+
+
+
 
 window.addEventListener('DOMContentLoaded',inicio,false);

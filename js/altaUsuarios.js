@@ -1,19 +1,19 @@
-var grabar = function(){
+﻿var grabar = function(){
     var idUs=document.getElementById('idusuario').value;
     var no=document.getElementById('nombre').value;
     var ap=document.getElementById('apellido').value;
     var ed=document.getElementById('edad').value;
-    var contr=document.getElementById('contraseña').value;
+    var contr=document.getElementById('contra').value;
 
     const data = new FormData();
-    data.append('idusuario', nc);
+    data.append('idusuario', idUs);
     data.append('nombre', no);
     data.append('apellido', ap);
     data.append('edad', ed);
     data.append('contraseña', contr);
 
 
-    fetch('http://localhost/ArquitecturaDeComputadorasArduino-V2/agregaUsuario.php',{
+    fetch('http://localhost/phpMuseo/agregaUsuario.php',{
         method: 'post',
         body: data
     })

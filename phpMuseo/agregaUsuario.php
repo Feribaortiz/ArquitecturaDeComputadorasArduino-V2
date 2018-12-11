@@ -14,8 +14,8 @@
    
     $respuesta = false;
 
-    $InsertaUsuario="insert into usuarios values(  $idUsuario,  '$nombre',  '$apellido',  $edad, $contraseña )";
-    $InsertaEnLogin="insert into login values(  $idUsuario, $contraseña )";
+    $InsertaUsuario="insert into usuarios values(  $idUsuario,  '$nombre',  '$apellido',  $edad, '$contraseña' )";
+    $InsertaEnLogin="insert into login values(  $idUsuario, '$contraseña' )";
 
     mysqli_query($conexion, $InsertaUsuario);
 
@@ -26,15 +26,17 @@
     $salida = array('respuesta' => $respuesta);
     print json_encode($salida);
 
-    //Siguiente Query
+     //Siguiente Query
 
-    mysqli_query($conexion, $InsertaEnLogin);
+     mysqli_query($conexion, $InsertaEnLogin);
 
-    if(mysqli_affected_rows($conexion) > 0 ){
-        $respuesta = true;
-    }
+     if(mysqli_affected_rows($conexion) > 0 ){
+         $respuesta = true;
+     }
+ 
+     $salida2 = array('respuesta' => $respuesta);
+     print json_encode($salida2);
+ 
 
-    $salida2 = array('respuesta' => $respuesta);
-    print json_encode($salida2);
-
+   
 ?>
