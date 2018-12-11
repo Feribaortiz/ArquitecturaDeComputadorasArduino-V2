@@ -17,6 +17,11 @@ body {
 	display: inline-block;
 	vertical-align: top;
 }
+
+#debajoDeBillete{
+    width: 18%;
+
+}
 .abajoIzquierda{
 	width: 18%;
 }
@@ -34,6 +39,15 @@ body {
 .btnPagina{
     border-radius: 10px;
     color: white;
+    background: gray;
+    border: 2px solid gray;
+    margin-top: -23px;
+    position: absolute;
+}
+
+.btnFav{
+    border-radius: 10px;
+    color:yellow;
     background: gray;
     border: 2px solid gray;
     margin-top: -23px;

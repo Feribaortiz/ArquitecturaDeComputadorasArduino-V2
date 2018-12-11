@@ -32,6 +32,9 @@ const inicio = function(){
                 <h4 class="titulo">${mos.titulo}</h4>
                 <button value="${num}" class="btnPagina" id="${i}" >Entrar</button>
             </article>
+            <article class="abajoIzquierda">
+            <button value="${num}" class="btnFav" id="${i}" >Favorito</button>
+            </article>
             <hr>
             <br>
             `;

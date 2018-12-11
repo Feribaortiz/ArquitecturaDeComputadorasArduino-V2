@@ -25,6 +25,7 @@ const inicio = function(){
             <article class="abajoDerecha">
                 <h4 class="titulo">${mos.titulo}</h4>
                 <button class="btnPagina" id="${i}" >Entrar</button>
+
             </article>
             <hr>
             <br>
