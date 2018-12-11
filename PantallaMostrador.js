@@ -2,6 +2,7 @@ var pos = localStorage.getItem("pos")
 var id = localStorage.getItem("id")
 var posmostrador = pos;
 var pantallaDetalles;
+var idBillete;
 var pantallaPiezas;
 var f;
 var num;
@@ -18,9 +19,10 @@ const inicio = function(){
     .then(datos => {
         let art= "";
           f = datos;
-        console.log(datos.mostradores[0].grupos[0])
+        
         for(let i = 0; i<datos.mostradores[pos].grupos.length; i++){
             const mos = datos.mostradores[pos].grupos[i];
+            console.log(datos.mostradores[pos].grupos[i])
             num = datos.mostradores[pos].grupos[i].piezas.length;
             art +=`
             <article class="abajoIzquierda">
@@ -51,6 +53,7 @@ var entraMoneda = function(){
     localStorage.setItem("posgrupo",this.id)
     localStorage.setItem("posmostrador",posmostrador)
     localStorage.setItem("pos",0)
+    idBillete = this.id;
     var bool = this.value;
     console.log(num)
     console.log(num == 1)
@@ -80,7 +83,7 @@ var muestraDetalles = function(){
         }
       });
     
-    const link = f.mostradores[posmostrador].grupos[pos].piezas[0].detallesUrl;
+    const link = f.mostradores[posmostrador].grupos[idBillete].piezas[0].detallesUrl;
     pantallaDetalles.loadURL(link)
 
     pantallaDetalles.show();

@@ -1,4 +1,4 @@
-var posgrupo = localStorage.getItem("pos")
+var posgrupo = localStorage.getItem("posgrupo")
 var posmostrador = localStorage.getItem("posmostrador")
 var id = localStorage.getItem("id")
 
@@ -43,13 +43,12 @@ const inicio = function(){
 window.addEventListener('DOMContentLoaded',inicio,false);
 
 var entraMoneda = function(){
-    console.log(this.id);
-    localStorage.setItem("pos",this.id)
-    localStorage.setItem("posgrupo",posgrupo)
-    localStorage.setItem("posmostrador",posmostrador)
-    pantallaDetalles = new BrowserWindow({width:1080,height:720})
-    console.log("http://museobillete.azurewebsites.net/Piezas/Details/BIL.MEX.M2")
-    console.log(f);
+     pantallaDetalles = new BrowserWindow({
+        webPreferences: {
+          preload: "./pantallaDetalles.js",
+          nodeIntegration: false
+        }
+      });
     const link = f.mostradores[posmostrador].grupos[posgrupo].piezas[this.id].detallesUrl;
     pantallaDetalles.loadURL(link)
     pantallaDetalles.show();
