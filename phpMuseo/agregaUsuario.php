@@ -1,4 +1,5 @@
 <?php
+    header('Access-Control-Allow-Origin: *');
     $idUsuario = $_POST["idusuario"];
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
@@ -13,9 +14,8 @@
 
    
     $respuesta = false;
-
-    $InsertaUsuario="insert into usuarios values(  $idUsuario,  '$nombre',  '$apellido',  $edad, '$contraseña' )";
-    $InsertaEnLogin="insert into login values(  $idUsuario, '$contraseña' )";
+    $InsertaUsuario=sprintf("insert into usuarios values(  '%s',  '%s',  '%s', %s , '%s' )",$idUsuario,$nombre,$apellido,$edad,$contraseña);
+    $InsertaEnLogin=sprintf("insert into login values( '%s' , '%s' )",$idUsuario,$contraseña);
 
     mysqli_query($conexion, $InsertaUsuario);
 
