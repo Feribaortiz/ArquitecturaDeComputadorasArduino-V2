@@ -17,16 +17,23 @@
         method: 'post',
         body: data
     })
-    .then(datos=>datos.json() )
-    .then(datos=>{
-        if(datos.respuesta == true){
-            alert('Usuario guardado con exito');
-        }else{
-            alert('No se pudieron guardar los datos');
-        }
-    })
-
+    muestraRegistro();
 }
-
 var btnGrabar = document.getElementById('btnGrabar');
 btnGrabar.addEventListener('click', grabar);
+
+var muestraRegistro = function(){
+    var idUs=document.getElementById('idusuario').value;
+    var contr=document.getElementById('contra').value;
+    const data = new FormData();
+    data.append('idusuario', idUs);
+    data.append('contrasena', contr);
+    fetch('http://localhost/phpMuseo/consultaUsuario.php',{
+        method: 'post',
+        body: data
+    })
+    .then(datos=>datos.json())
+    .then(datos=>{
+        console.log(datos);
+    })
+}
