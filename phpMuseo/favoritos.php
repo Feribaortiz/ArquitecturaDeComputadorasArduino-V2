@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     header('Access-Control-Allow-Origin: *');
     $codigoRelacion = $_POST["codigoRelacion"];
     $idusuario = $_POST["idusuario"];
@@ -13,7 +13,7 @@
 
    
     $respuesta = false;
-    $InsertaFavorito=sprintf("insert into usuariofavoritos values(  '%s',  '%s',  '%s')",$codigoRelacion,$idusuario,$idPieza);
+    $InsertaFavorito=sprintf("insert into usuariofavoritos values(  %s,  '%s',  '%s')",$codigoRelacion,$idusuario,$idPieza);
 
 
     mysqli_query($conexion, $InsertaFavorito);
