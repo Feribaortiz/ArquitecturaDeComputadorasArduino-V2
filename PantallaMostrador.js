@@ -99,30 +99,35 @@ var muestraDetalles = function(){
 
 }
 
-var valor = true
 var favorito = function(){
+    idBillete = this.id;
     var btn = document.getElementsByClassName('btnFav')
+    var codigoRelacion = 0;
     
   if (btn.value == '0') 
       btn.value = '1';
   else btn.value = '0'; 
 
-  console.log(btn.value);
-
   if (btn.value == '0') 
       btn.innerHTML ="No es favorito"
 
-       console.log(idusuario);
-    
-        const data = new FormData();
-        data.append('idusuario', idusuario);
        //Link de los detalles
         var link = f.mostradores[posmostrador].grupos[idBillete].piezas[0].detallesUrl;
+        console.log(idusuario);
+        console.log(link);
+        console.log(idBillete);
+
+        const data = new FormData();
+        data.append('codigoRelacion', codigoRelacion);
+        data.append('idusuario', idusuario);
+        data.append('idPieza', link);
     
-        fetch('http://localhost/phpMuseo/agregaUsuario.php',{
+        fetch('http://localhost/phpMuseo/favoritos.php',{
             method: 'post',
             body: data
         })
+        
+        console.log('fin');
     }
 
 
