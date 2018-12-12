@@ -116,8 +116,8 @@ var favorito = function(){
     
         const data = new FormData();
         data.append('idusuario', idusuario);
-       
-    
+       //Link de los detalles
+        var link = f.mostradores[posmostrador].grupos[idBillete].piezas[0].detallesUrl;
     
         fetch('http://localhost/phpMuseo/agregaUsuario.php',{
             method: 'post',
