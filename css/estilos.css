@@ -5,38 +5,64 @@ body {
     background: #e1edd1;
 }
 
-#abajo{
-	color: black;
-	height: 718px;
-	margin-top: 70px;
-	padding-left: 15px;
-	padding-top: 15px;
-	width: 98.5%;
-}
-#abajo article{
-	display: inline-block;
-	vertical-align: top;
+#abajo {
+    color: black;
+    height: 718px;
+    margin-top: 70px;
+    padding-left: 15px;
+    padding-top: 15px;
+    width: 98.5%;
 }
 
-#debajoDeBillete{
+.botones {
+    background: #dbe8f2a8;
+    color: black;
+    margin-top: 70px;
+    display: inline-grid;
+    vertical-align: top;    
+    border: 2px solid gray;
+    border-radius: 10px;
+    font-size: 1.5em;
+}
+
+#abajo article {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#debajoDeBillete {
     width: 18%;
 
 }
-.abajoIzquierda{
-	width: 18%;
+#btnRegistro{
+    width: 100%;
 }
-.abajoDerecha{
-	width: 68%;
+.primerasPaginas{
+    height: 718px;
+    margin-top: 70px;
+    margin-left: 400px;
+    width: 15%;
 }
-.txtNombre{
-	font-size: 1.5em;
-	font-family: "arial";
-	font-weight: bold;
+
+.abajoIzquierda {
+    width: 18%;
 }
-.imgFoto{
+
+.abajoDerecha {
+    width: 68%;
+}
+
+.txtNombre {
+    font-size: 1.5em;
+    font-family: "arial";
+    font-weight: bold;
+}
+
+.imgFoto {
     width: 133px;
 }
-.btnPagina{
+
+.btnPagina {
     border-radius: 10px;
     color: white;
     background: gray;
@@ -45,27 +71,16 @@ body {
     position: absolute;
 }
 
-.btnFav{
+.btnFav {
     border-radius: 10px;
-    color:yellow;
+    color: yellow;
     background: gray;
     border: 2px solid gray;
     margin-top: -23px;
     position: absolute;
 }
-.titulo{
+
+.titulo {
     font-size: 1.5em;
     font-style: oblique;
 }
-
-
-
-
-
-
-
-
-
-
-
-

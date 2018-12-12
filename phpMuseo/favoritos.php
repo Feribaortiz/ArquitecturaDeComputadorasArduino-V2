@@ -1,6 +1,6 @@
-﻿<?php
+<?php
     header('Access-Control-Allow-Origin: *');
-    $codigoRelacion = $_POST["codigoRelacion"];
+    $codigoRelacion = 0;
     $idusuario = $_POST["idusuario"];
     $idPieza = $_POST["idPieza"];
    
@@ -15,12 +15,10 @@
     $respuesta = false;
     $InsertaFavorito=sprintf("insert into usuariofavoritos values(  %s,  '%s',  '%s')",$codigoRelacion,$idusuario,$idPieza);
 
-
     mysqli_query($conexion, $InsertaFavorito);
 
     if(mysqli_affected_rows($conexion) > 0 ){
         $respuesta = true;
-        console.log('se insertó');
     }
 
     $salida = array('respuesta' => $respuesta);
