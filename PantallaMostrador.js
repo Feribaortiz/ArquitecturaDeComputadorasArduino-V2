@@ -7,6 +7,8 @@ var pantallaPiezas;
 var f;
 var num;
 var btnMonedas = document.getElementsByClassName('btnPagina')
+var btnFav = document.getElementsByClassName('btnFav')
+var idusuario = JSON.parse(localStorage.getItem('idusuario'));
 const {BrowserWindow}=require('electron').remote
 const app=require('electron').app
 const path=require('path')
@@ -33,7 +35,7 @@ const inicio = function(){
                 <button value="${num}" class="btnPagina" id="${i}" >Entrar</button>
             </article>
             <article class="abajoIzquierda">
-            <button value="${num}" class="btnFav" id="${i}" >Favorito</button>
+            <button value="0" class="btnFav" id="${i}" >Añadir a Favoritos</button>
             </article>
             <hr>
             <br>
@@ -44,6 +46,10 @@ const inicio = function(){
         
         for(let i=0;i<btnMonedas.length;i++){
             btnMonedas[i].addEventListener('click',entraMoneda)
+        }
+
+        for(let i=0;i<btnMonedas.length;i++){
+            btnFav[i].addEventListener('click',favorito)
         }
     });
 
@@ -92,5 +98,34 @@ var muestraDetalles = function(){
     pantallaDetalles.show();
 
 }
+
+var valor = true
+var favorito = function(){
+    var btn = document.getElementsByClassName('btnFav')
+    
+  if (btn.value == '0') 
+      btn.value = '1';
+  else btn.value = '0'; 
+
+  console.log(btn.value);
+
+  if (btn.value == '0') 
+      btn.innerHTML ="No es favorito"
+
+       console.log(idusuario);
+    
+        const data = new FormData();
+        data.append('idusuario', idusuario);
+       
+    
+    
+        fetch('http://localhost/phpMuseo/agregaUsuario.php',{
+            method: 'post',
+            body: data
+        })
+    }
+
+
+
 
 

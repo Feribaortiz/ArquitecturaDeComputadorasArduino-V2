@@ -27,6 +27,7 @@ var Login = function(){
         console.log(idUs);
         if(idUs == dID){
             console.log("Hols")
+            localStorage.setItem('idusuario', JSON.stringify(idUs));
             entrarPantallaInicial();
             window.close();
            }
